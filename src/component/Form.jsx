@@ -87,6 +87,7 @@ const Form = () => {
                         name="title"
                         value={formData.title}
                         onChange={handleChange}
+                        required
                     />
                 </FormControl>
                 <FormControl>
@@ -96,6 +97,7 @@ const Form = () => {
                         name="weight"
                         value={formData.weight}
                         onChange={handleChange}
+                        required
                     />
                 </FormControl>
                 <FormControl>
@@ -105,6 +107,7 @@ const Form = () => {
                         name="reps"
                         value={formData.reps}
                         onChange={handleChange}
+                        required
                     />
                 </FormControl>
 
