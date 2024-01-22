@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
 
-        <Flex minWidth='max-content' alignItems='center' gap='2' backgroundColor={"ButtonShadow"} p={5}>
+        <Flex minWidth='max-content' alignItems='center' backgroundColor={"ButtonShadow"} p={5}>
             <Link to={'/'}>
                 <Box p='2' display={"flex"} gap={2}>
                     <Heading size='md'>Workout Buddy</Heading>
