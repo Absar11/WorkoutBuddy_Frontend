@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Container, StackDivider, Text, VStack } from '@chakra-ui/react'
 import WorkoutDetails from '../component/WorkoutDetails';
+import Form from '../component/Form';
 
 const Home = () => {
 
@@ -33,8 +34,8 @@ const Home = () => {
                     <Text>Loading...</Text>
                 )}
             </Box>
-            <Box width={"30%"} bg={"whitesmoke"}>
-
+            <Box width={"30%"} bg={"white"} borderRadius={10} p={5} maxHeight={"350"}>
+                <Form />
             </Box>
         </Box>
     )
