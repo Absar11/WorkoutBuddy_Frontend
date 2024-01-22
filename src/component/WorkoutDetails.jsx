@@ -60,12 +60,12 @@ const WorkoutDetails = ({ workout }) => {
             <Box>
                 <Heading >{workout.title}</Heading>
                 <Divider />
-                <Box display={"flex"} alignItems={"center"} color='#1aac83' gap={2}>
+                <Box display={"flex"} alignItems={"center"} gap={2}>
                     <Text fontSize='2xl'> <strong>Weight :</strong> {workout.weight} </Text>
                     <GiWeightLiftingUp size={25} />
                 </Box>
                 <Divider />
-                <Box display={"flex"} alignItems={"center"} color='#1aac83' gap={2}>
+                <Box display={"flex"} alignItems={"center"} gap={2}>
                     <Text fontSize='2xl'> <strong>Reps :</strong> {workout.reps} </Text>
                     <FaRepeat size={20} />
                 </Box>

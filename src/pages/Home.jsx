@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Container, StackDivider, Text, VStack } from '@chakra-ui/react'
+import { Box, Text, } from '@chakra-ui/react'
 import WorkoutDetails from '../component/WorkoutDetails';
 import Form from '../component/Form';
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 
 const Home = () => {
 
-    const [workouts, setWorkouts] = useState(null);
+    const { workouts, dispatch } = useWorkoutsContext();
 
     useEffect(() => {
         const fetchWorkouts = async () => {
@@ -13,12 +14,12 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setWorkouts(json)
+                dispatch({ type: 'SET_WORKOUTS', payload: json })
             }
         }
 
         fetchWorkouts()
-    }, [])
+    }, [dispatch])
 
 
     return (

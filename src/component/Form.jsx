@@ -1,7 +1,10 @@
-import { Box, Button, FormControl, FormLabel, Heading, Input, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { Box, Button, FormControl, FormLabel, Heading, Input, useToast } from '@chakra-ui/react';
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+
 
 const Form = () => {
+    const { dispatch } = useWorkoutsContext();
     const [formData, setFormData] = useState({
         title: '',
         weight: '',
@@ -53,6 +56,7 @@ const Form = () => {
                     isClosable: true
                 })
                 console.log(json);
+                dispatch({ type: 'CREATE_WORKOUT', payload: json })
             }
 
             // Reset the form data state if needed
