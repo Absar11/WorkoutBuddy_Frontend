@@ -10,7 +10,7 @@ function App() {
   return (
     <ChakraProvider>
       <BrowserRouter>
-        <Box minHeight={"100vh"} minWidth={"100vw"} bg={'#1aac83'}>
+        <Box minHeight={"100vh"} minWidth={"100vw"} bg={'#1aac83'} overflowX={"hidden"}>
           <Navbar />
           <Routes>
             <Route path={"/"} element={<Home />} />

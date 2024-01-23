@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Box,
     Button,
@@ -14,10 +14,56 @@ import { FaRepeat } from "react-icons/fa6";
 import { Trash } from "phosphor-react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { FaEdit } from "react-icons/fa";
+import EditForm from "./EditForm";
 
 const WorkoutDetails = ({ workout }) => {
     const { dispatch } = useWorkoutsContext();
     const toast = useToast();
+
+    const [isEditOpen, setIsEditOpen] = useState(false);
+
+    const handleEdit = async (updatedWorkout) => {
+        try {
+            const response = await fetch(
+                `http://localhost:5000/api/v1/${workout._id}`,
+                {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedWorkout),
+                }
+            );
+
+            if (response.ok) {
+                // Update the state only if the update request is successful
+                dispatch({ type: 'EDIT_WORKOUT', payload: updatedWorkout });
+
+                // Show a success toast
+                toast({
+                    title: "Workout Updated successfully",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                });
+            } else {
+                // Handle errors, show error toast or perform other actions
+                console.error("Failed to update workout:", response.statusText);
+            }
+        } catch (error) {
+            console.error("Error updating workout:", error.message);
+        }
+    };
+
+
+    const handleEditOpen = () => {
+        setIsEditOpen(true);
+    };
+
+    const handleEditClose = () => {
+        setIsEditOpen(false);
+    };
 
     const handleDelete = async () => {
         try {
@@ -87,9 +133,21 @@ const WorkoutDetails = ({ workout }) => {
                     </Text>
                 </Box>
             </Box>
-            <Button>
-                <Trash onClick={handleDelete} size={30} color="#1aac83" />
-            </Button>
+
+            <Box gap={2}>
+                <Button>
+                    <Trash onClick={handleDelete} size={25} color="#1aac83" />
+                </Button>
+
+                <Button onClick={handleEditOpen} color="#1aac83">
+                    <FaEdit size={20} />
+                </Button>
+                {/* Render the EditForm conditionally */}
+                {isEditOpen && (
+                    <EditForm workout={workout} onEdit={handleEdit} onClose={handleEditClose} />
+                )}
+            </Box>
+
         </Box>
     );
 };
