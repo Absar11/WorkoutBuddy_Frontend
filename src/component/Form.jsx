@@ -20,7 +20,7 @@ const Form = () => {
 
         const workout = { title, weight, reps }; // spread formData to create a copy
 
-        const response = await fetch('http://localhost:5000/api/v1', {
+        const response = await fetch('http://localhost:5000/api/workout', {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {

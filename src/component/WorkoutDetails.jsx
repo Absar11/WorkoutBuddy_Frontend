@@ -26,7 +26,7 @@ const WorkoutDetails = ({ workout }) => {
     const handleEdit = async (updatedWorkout) => {
         try {
             const response = await fetch(
-                `http://localhost:5000/api/v1/${workout._id}`,
+                `http://localhost:5000/api/workout/${workout._id}`,
                 {
                     method: "PATCH",
                     headers: {
@@ -68,7 +68,7 @@ const WorkoutDetails = ({ workout }) => {
     const handleDelete = async () => {
         try {
             const response = await fetch(
-                `http://localhost:5000/api/v1/${workout._id}`,
+                `http://localhost:5000/api/workout/${workout._id}`,
                 {
                     method: "DELETE",
                 }
